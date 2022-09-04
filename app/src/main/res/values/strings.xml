@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">VideogameList</string>
+    <string name="app_name">VideoGameList</string>
+
+    <string name="home_fragment_place_holder">Home Fragment</string>
+    <string name="search_fragment_place_holder">Search Fragment</string>
+    <string name="bookmarked_fragment_place_holder">Bookmarked Fragment</string>
+    <string name="profile_fragment_place_holder">Profile Fragment</string>
 </resources>
