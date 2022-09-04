@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/drawable/profile_tab_icon.xml" value="0.1795" />
         <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/activity_main.xml" value="0.575" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/fragment_bookmarked.xml" value="0.57116953762466" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/fragment_home.xml" value="0.575" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/fragment_login.xml" value="0.575" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/fragment_menu.xml" value="0.575" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/fragment_profile.xml" value="0.575" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/fragment_register.xml" value="0.575" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/layout/fragment_search.xml" value="0.575" />
+        <entry key="..\:/Users/Usuario/AndroidProjects/VideogameList/app/src/main/res/menu/tab_bar_menu.xml" value="0.5739583333333333" />
       </map>
     </option>
   </component>
