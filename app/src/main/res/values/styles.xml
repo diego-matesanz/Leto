@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text Styles -->
+    <style name="HeadingLarge">
+        <item name="fontFamily">@font/outfit_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_32_sp</item>
+    </style>
+
+    <style name="HeadingMedium">
+        <item name="fontFamily">@font/outfit_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_24_sp</item>
+    </style>
+
+    <style name="HeadingSmall">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_24_sp</item>
+    </style>
+
+    <style name="HeadingXSmall">
+        <item name="fontFamily">@font/outfit_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_18_sp</item>
+    </style>
+
+    <style name="BodyMedium">
+        <item name="fontFamily">@font/outfit_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_15_sp</item>
+    </style>
+
+    <style name="BodySmall">
+        <item name="fontFamily">@font/outfit_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_13_sp</item>
+    </style>
+</resources>

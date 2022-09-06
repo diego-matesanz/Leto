@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- View sizes -->
     <dimen name="match_constraints">0dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_size_13_sp">13sp</dimen>
+    <dimen name="text_size_15_sp">15sp</dimen>
+    <dimen name="text_size_18_sp">18sp</dimen>
+    <dimen name="text_size_24_sp">24sp</dimen>
+    <dimen name="text_size_32_sp">32sp</dimen>
 </resources>
