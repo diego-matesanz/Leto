@@ -1,4 +1,4 @@
-package com.example.videogamelist.screens.authentication
+package com.dmatesanz.leto.screens.authentication
 
 import android.os.Bundle
 import android.text.SpannableString
@@ -13,9 +13,9 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.videogamelist.R
-import com.example.videogamelist.databinding.FragmentRegisterBinding
-import com.example.videogamelist.utils.ExtensionFunctions.isValidEmail
+import com.dmatesanz.leto.R
+import com.dmatesanz.leto.databinding.FragmentRegisterBinding
+import com.dmatesanz.leto.utils.ExtensionFunctions.isValidEmail
 
 class RegisterFragment : Fragment() {
 

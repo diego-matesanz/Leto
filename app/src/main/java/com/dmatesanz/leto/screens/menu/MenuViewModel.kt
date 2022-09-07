@@ -1,4 +1,4 @@
-package com.example.videogamelist.screens.menu
+package com.dmatesanz.leto.screens.menu
 
 import androidx.lifecycle.ViewModel
 

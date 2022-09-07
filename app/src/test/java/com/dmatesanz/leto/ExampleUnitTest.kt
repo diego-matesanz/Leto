@@ -1,4 +1,4 @@
-package com.example.videogamelist
+package com.dmatesanz.leto
 
 import org.junit.Test
 

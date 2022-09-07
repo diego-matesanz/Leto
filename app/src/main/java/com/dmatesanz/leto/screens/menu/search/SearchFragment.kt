@@ -1,4 +1,4 @@
-package com.example.videogamelist.screens.menu.profile
+package com.dmatesanz.leto.screens.menu.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.videogamelist.databinding.FragmentProfileBinding
-import com.example.videogamelist.screens.menu.MenuViewModel
+import com.dmatesanz.leto.databinding.FragmentSearchBinding
+import com.dmatesanz.leto.screens.menu.MenuViewModel
 
-class ProfileFragment : Fragment() {
+class SearchFragment : Fragment() {
 
-    private lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentSearchBinding
 
     private val viewModel: MenuViewModel by activityViewModels()
 
@@ -19,7 +19,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProfileBinding.inflate(layoutInflater)
+        binding = FragmentSearchBinding.inflate(layoutInflater)
 
         return binding.root
     }
