@@ -1,8 +1,24 @@
 <resources>
     <string name="app_name">VideoGameList</string>
 
+    <!-- Place Holders -->
     <string name="home_fragment_place_holder">Home Fragment</string>
     <string name="search_fragment_place_holder">Search Fragment</string>
     <string name="bookmarked_fragment_place_holder">Bookmarked Fragment</string>
     <string name="profile_fragment_place_holder">Profile Fragment</string>
+
+    <!-- Content Descriptions -->
+    <string name="app_logo_content_description">App Logo</string>
+    
+    <!-- Login Fragment -->
+    <string name="login">Login</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="login_to_your_account">Login to your account</string>
+    <string name="no_account">"Don\'t have an account?    Sign Up"</string>
+    <string name="sign_up">Sign Up</string>
+
+    <!-- Error Messages -->
+    <string name="is_empty">Can\'t be empty</string>
+    <string name="format_error">Invalid format</string>
 </resources>
