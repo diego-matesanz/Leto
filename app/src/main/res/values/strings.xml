@@ -18,7 +18,13 @@
     <string name="no_account">"Don\'t have an account?    Sign Up"</string>
     <string name="sign_up">Sign Up</string>
 
+    <!-- Register Fragment -->
+    <string name="repeat_password">Repeat Password</string>
+    <string name="create_account">Create an account</string>
+    <string name="have_account">"Already have an account?    Login"</string>
+
     <!-- Error Messages -->
     <string name="is_empty">Can\'t be empty</string>
     <string name="format_error">Invalid format</string>
+    <string name="password_match_error">Passwords must match</string>
 </resources>
