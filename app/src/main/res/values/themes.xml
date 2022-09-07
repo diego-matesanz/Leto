@@ -9,7 +9,7 @@
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/tart_orange</item>
-        <item name="colorSecondaryVariant">@color/dark_gunmetal</item>
+        <item name="colorSecondaryVariant">@color/white</item>
         <item name="colorOnSecondary">@color/chinese_black</item>
         <item name="android:background">@color/chinese_black</item>
 

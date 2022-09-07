@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.videogamelist.R
 import com.example.videogamelist.databinding.FragmentMenuBinding
@@ -27,6 +28,7 @@ class MenuFragment : Fragment() {
         binding = FragmentMenuBinding.inflate(layoutInflater)
 
         initBottomBar()
+        navigateToLogin()
 
         return binding.root
     }
@@ -35,5 +37,9 @@ class MenuFragment : Fragment() {
         navHostFragment = childFragmentManager.findFragmentById(R.id.menu_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         binding.menuBottomNavigationView.setupWithNavController(navController)
+    }
+
+    private fun navigateToLogin() {
+        findNavController().navigate(R.id.action_menuFragment_to_loginFragment)
     }
 }

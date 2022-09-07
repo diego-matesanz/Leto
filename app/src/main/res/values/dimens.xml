@@ -4,10 +4,32 @@
     <!-- View sizes -->
     <dimen name="match_constraints">0dp</dimen>
 
+    <!-- Margins -->
+    <dimen name="margin_xx_small">8dp</dimen>
+    <dimen name="margin_x_small">12dp</dimen>
+    <dimen name="margin_small">16dp</dimen>
+    <dimen name="margin_medium">24dp</dimen>
+    <dimen name="margin_large">36dp</dimen>
+    <dimen name="margin_x_large">48dp</dimen>
+    <dimen name="margin_xx_large">56dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="padding_xx_small">8dp</dimen>
+    <dimen name="padding_x_small">12dp</dimen>
+    <dimen name="padding_small">16dp</dimen>
+    <dimen name="padding_medium">24dp</dimen>
+    <dimen name="padding_large">36dp</dimen>
+    <dimen name="padding_x_large">48dp</dimen>
+    <dimen name="padding_xx_large">56dp</dimen>
+
     <!-- Text sizes -->
-    <dimen name="text_size_13_sp">13sp</dimen>
-    <dimen name="text_size_15_sp">15sp</dimen>
-    <dimen name="text_size_18_sp">18sp</dimen>
-    <dimen name="text_size_24_sp">24sp</dimen>
-    <dimen name="text_size_32_sp">32sp</dimen>
+    <dimen name="text_size_x_small">13sp</dimen>
+    <dimen name="text_size_small">15sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_x_large">32sp</dimen>
+    
+    <!-- Corner Radius Sizes -->
+    <dimen name="corner_radius_6_dp">6dp</dimen>
+    <dimen name="corner_radius_10_dp">10dp</dimen>
 </resources>

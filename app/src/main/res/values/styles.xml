@@ -2,39 +2,99 @@
 <resources>
 
     <!-- Text Styles -->
-    <style name="HeadingLarge">
-        <item name="fontFamily">@font/outfit_light</item>
+    <style name="BaseText">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/text_size_32_sp</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
-    <style name="HeadingMedium">
+    <style name="HeadingLarge" parent="BaseText">
         <item name="fontFamily">@font/outfit_light</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/text_size_24_sp</item>
+        <item name="android:textSize">@dimen/text_size_x_large</item>
     </style>
 
-    <style name="HeadingSmall">
+    <style name="HeadingMedium" parent="BaseText">
+        <item name="fontFamily">@font/outfit_light</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="HeadingSmall" parent="BaseText">
         <item name="fontFamily">@font/outfit_medium</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/text_size_24_sp</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
     </style>
 
-    <style name="HeadingXSmall">
+    <style name="HeadingXSmall" parent="BaseText">
         <item name="fontFamily">@font/outfit_medium</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/text_size_18_sp</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
-    <style name="BodyMedium">
+    <style name="BodyMedium" parent="BaseText">
         <item name="fontFamily">@font/outfit_light</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/text_size_15_sp</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
     </style>
 
-    <style name="BodySmall">
+    <style name="BodySmall" parent="BaseText">
         <item name="fontFamily">@font/outfit_light</item>
+        <item name="android:textSize">@dimen/text_size_x_small</item>
+    </style>
+
+    <style name="PlaceHolderTextAppearance" parent="BodyMedium">
+        <item name="android:textColor">@color/light_gray</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="ErrorTextAppearance" parent="BodyMedium">
+        <item name="android:textColor">@color/tart_orange</item>
+        <item name="android:textSize">@dimen/text_size_x_small</item>
+    </style>
+
+    <!-- Components -->
+
+    <!-- Edit Texts -->
+    <style name="EditTextThemeOverlay" parent="">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="textInputStyle">@style/Theme.AppCompat.Light.NoActionBar</item>
+    </style>
+
+    <style name="BaseInputLayout">
+        <item name="android:textColorHint">@color/light_gray</item>
+        <item name="android:theme">@style/EditTextThemeOverlay</item>
+        <item name="placeholderTextAppearance">@style/PlaceHolderTextAppearance</item>
+        <item name="errorTextAppearance">@style/PlaceHolderTextAppearance</item>
+        <item name="android:textAppearance">@style/PlaceHolderTextAppearance</item>
+    </style>
+
+    <style name="BaseEditText">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/text_size_13_sp</item>
+        <item name="android:backgroundTint">@color/ucla_blue</item>
+        <item name="android:paddingHorizontal">@dimen/padding_medium</item>
+    </style>
+
+    <style name="EmailInputLayout" parent="BaseInputLayout">
+        <item name="android:hint">@string/email_address</item>
+        <item name="placeholderText">@string/email_address</item>
+    </style>
+
+    <style name="EmailEditText" parent="BaseEditText">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="PasswordInputLayout" parent="BaseInputLayout">
+        <item name="endIconMode">password_toggle</item>
+        <item name="android:hint">@string/password</item>
+        <item name="placeholderText">@string/password</item>
+    </style>
+
+    <style name="PasswordEditText" parent="BaseEditText">
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <!-- Buttons -->
+    <style name="BaseButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/outfit_light</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/selector_button_text_color</item>
+        <item name="android:background">@drawable/shape_button_background</item>
     </style>
 </resources>

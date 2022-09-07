@@ -2,6 +2,8 @@
 <resources>
 
     <color name="white">#FFFFFF</color>
+    <color name="light_gray">#9F9F9F</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="ucla_blue">#5A698F </color>
     <color name="tart_orange">#FC4747</color>
     <color name="chinese_black">#10141E</color>
