@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
 
     private fun checkCredentials() {
         val emailError =
-            if (isEmailEmpty) resources.getString(R.string.is_empty) else if (!isValidEmail) resources.getString(R.string.format_error) else null
+            if (isEmailEmpty) resources.getString(R.string.is_empty) else null
         binding.textInputLayoutEmail.error = emailError
         val passwordError =
             if (isPasswordEmpty) resources.getString(R.string.is_empty) else null
