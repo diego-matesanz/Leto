@@ -7,28 +7,27 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dmatesanz.leto.R
 import com.dmatesanz.leto.databinding.FragmentRegisterBinding
 import com.dmatesanz.leto.utils.ExtensionFunctions.isValidEmail
-import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
-    private lateinit var auth: FirebaseAuth
 
     private val viewModel: AuthenticationViewModel by activityViewModels()
 
     private var isEmailEmpty: Boolean = true
     private var isValidEmail: Boolean = false
     private var isPasswordEmpty: Boolean = true
+    private var isValidPassword: Boolean = false
     private var isRepeatPasswordEmpty: Boolean = true
     private var isRepeatPasswordValid: Boolean = false
 
@@ -37,9 +36,10 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterBinding.inflate(layoutInflater)
-        auth = FirebaseAuth.getInstance()
+        viewModel.initAuth()
 
         setListeners()
+        setObservers()
         initSignUpSpan()
 
         return binding.root
@@ -78,6 +78,9 @@ class RegisterFragment : Fragment() {
         binding.editTextPassword.doOnTextChanged { text, _, _, _ ->
             binding.textInputLayoutPassword.error = null
             isPasswordEmpty = text.isNullOrEmpty()
+            if (text != null) {
+                isValidPassword = text.length >= PASSWORD_MIN_LENGTH
+            }
         }
         binding.editTextRepeatPassword.doOnTextChanged { text, _, _, _ ->
             binding.textInputLayoutRepeatPassword.error = null
@@ -91,40 +94,42 @@ class RegisterFragment : Fragment() {
         }
     }
 
+    private fun setObservers() {
+        viewModel.createUserSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().navigate(R.id.action_registerFragment_to_menuFragment)
+            } else {
+                Log.w(TAG, "createUserWithEmail:failure")
+            }
+        }
+    }
+
     private fun checkForm() {
         val emailValidity = isCorrectEmail()
         val passwordValidity = isCorrectPassword()
         val repeatPasswordValidity = isCorrectRepeatPassword()
         if (emailValidity && passwordValidity && repeatPasswordValidity) {
-            auth.createUserWithEmailAndPassword(
+            viewModel.createUser(
                 binding.editTextEmail.text.toString(),
                 binding.editTextPassword.text.toString()
             )
-                .addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "createUserWithEmail:success")
-                        val user = auth.currentUser
-                        if (user != null) {
-                            Log.d(TAG, user.uid)
-                            findNavController().navigate(R.id.action_registerFragment_to_menuFragment)
-                        }
-                    } else {
-                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    }
-                }
         }
     }
 
     private fun isCorrectEmail(): Boolean {
         val emailError =
-            if (isEmailEmpty) resources.getString(R.string.is_empty) else if (!isValidEmail) resources.getString(R.string.format_error) else null
+            if (isEmailEmpty) resources.getString(R.string.is_empty) else if (!isValidEmail) resources.getString(
+                R.string.format_error
+            ) else null
         binding.textInputLayoutEmail.error = emailError
         return emailError.isNullOrEmpty()
     }
 
     private fun isCorrectPassword(): Boolean {
         val passwordError =
-            if (isPasswordEmpty) resources.getString(R.string.is_empty) else null
+            if (isPasswordEmpty) resources.getString(R.string.is_empty) else if (!isValidPassword) resources.getString(
+                R.string.password_format_error
+            ) else null
         binding.textInputLayoutPassword.error = passwordError
         return passwordError.isNullOrEmpty()
     }
@@ -148,9 +153,17 @@ class RegisterFragment : Fragment() {
         }
         val startPosition = haveAccountSpannable.toString().indexOf(loginText, 0, false)
         val endPosition = startPosition + loginText.length
-        haveAccountSpannable.setSpan(loginClickListener, startPosition, endPosition, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         haveAccountSpannable.setSpan(
-            ForegroundColorSpan(loginTextColor), startPosition, endPosition, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            loginClickListener,
+            startPosition,
+            endPosition,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        haveAccountSpannable.setSpan(
+            ForegroundColorSpan(loginTextColor),
+            startPosition,
+            endPosition,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
         binding.textViewHaveAccount.text = haveAccountSpannable
@@ -158,6 +171,8 @@ class RegisterFragment : Fragment() {
     }
 
     companion object {
+        const val PASSWORD_MIN_LENGTH = 6
+
         private val TAG = RegisterFragment::class.java.simpleName
     }
 }
