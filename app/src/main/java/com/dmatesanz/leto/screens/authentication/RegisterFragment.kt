@@ -18,7 +18,6 @@ import com.dmatesanz.leto.R
 import com.dmatesanz.leto.databinding.FragmentRegisterBinding
 import com.dmatesanz.leto.utils.ExtensionFunctions.isValidEmail
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 class RegisterFragment : Fragment() {
 
@@ -107,6 +106,7 @@ class RegisterFragment : Fragment() {
                         val user = auth.currentUser
                         if (user != null) {
                             Log.d(TAG, user.uid)
+                            findNavController().navigate(R.id.action_registerFragment_to_menuFragment)
                         }
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
