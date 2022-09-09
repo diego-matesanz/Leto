@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "196486488032",
+    "project_id": "leto-game-tracer",
+    "storage_bucket": "leto-game-tracer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196486488032:android:71777894046e81cc611585",
+        "android_client_info": {
+          "package_name": "com.dmatesanz.leto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196486488032-605d29lh4vrb1qrapm3e1n5egositdu4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dmatesanz.leto",
+            "certificate_hash": "1263d9a9e8edf2153c6b2cc1fc18cbbfb27ec710"
+          }
+        },
+        {
+          "client_id": "196486488032-6unj7qo3sf64han8vs9arm7v000lmd7f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4XzYBdv6EHztpk9mzLsyf0bSUnKPaFTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196486488032-6unj7qo3sf64han8vs9arm7v000lmd7f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

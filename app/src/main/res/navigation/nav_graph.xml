@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.videogamelist.screens.menu.MenuFragment"
+        android:name="com.dmatesanz.leto.screens.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu">
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.videogamelist.screens.authentication.LoginFragment"
+        android:name="com.dmatesanz.leto.screens.authentication.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.videogamelist.screens.authentication.RegisterFragment"
+        android:name="com.dmatesanz.leto.screens.authentication.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
         <action

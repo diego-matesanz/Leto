@@ -1,4 +1,4 @@
-package com.example.videogamelist.screens.authentication
+package com.dmatesanz.leto.screens.authentication
 
 import androidx.lifecycle.ViewModel
 

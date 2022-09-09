@@ -1,11 +1,11 @@
-package com.example.videogamelist.screens
+package com.dmatesanz.leto.screens
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.view.WindowInsetsControllerCompat
-import com.example.videogamelist.R
+import com.dmatesanz.leto.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

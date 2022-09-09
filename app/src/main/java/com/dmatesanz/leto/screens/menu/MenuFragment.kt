@@ -1,6 +1,7 @@
-package com.example.videogamelist.screens.menu
+package com.dmatesanz.leto.screens.menu
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +11,17 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.videogamelist.R
-import com.example.videogamelist.databinding.FragmentMenuBinding
+import com.dmatesanz.leto.R
+import com.dmatesanz.leto.databinding.FragmentMenuBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MenuFragment : Fragment() {
 
     private lateinit var binding: FragmentMenuBinding
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
+    private lateinit var auth: FirebaseAuth
 
     private val viewModel: MenuViewModel by activityViewModels()
 
@@ -26,20 +30,23 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMenuBinding.inflate(layoutInflater)
+        auth = FirebaseAuth.getInstance()
 
+        checkUserLogged()
         initBottomBar()
-        navigateToLogin()
 
         return binding.root
+    }
+
+    private fun checkUserLogged() {
+        if (auth.currentUser == null) {
+            findNavController().navigate(R.id.action_menuFragment_to_loginFragment)
+        }
     }
 
     private fun initBottomBar() {
         navHostFragment = childFragmentManager.findFragmentById(R.id.menu_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         binding.menuBottomNavigationView.setupWithNavController(navController)
-    }
-
-    private fun navigateToLogin() {
-        findNavController().navigate(R.id.action_menuFragment_to_loginFragment)
     }
 }

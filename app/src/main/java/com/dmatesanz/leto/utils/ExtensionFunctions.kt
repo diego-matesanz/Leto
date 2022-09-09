@@ -1,4 +1,4 @@
-package com.example.videogamelist.utils
+package com.dmatesanz.leto.utils
 
 import android.text.TextUtils
 
