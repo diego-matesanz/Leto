@@ -36,7 +36,6 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterBinding.inflate(layoutInflater)
-        viewModel.initAuth()
 
         setListeners()
         setObservers()
