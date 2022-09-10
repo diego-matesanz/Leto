@@ -9,8 +9,8 @@ class AuthenticationViewModel: ViewModel() {
 
     private lateinit var auth: FirebaseAuth
 
-    val createUserSuccess: MutableLiveData<Boolean> = MutableLiveData(false)
-    val loginSuccess: MutableLiveData<Boolean> = MutableLiveData(false)
+    val createUserSuccess: MutableLiveData<Boolean> = MutableLiveData()
+    val loginSuccess: MutableLiveData<Boolean> = MutableLiveData()
 
     fun initAuth() {
         auth = FirebaseAuth.getInstance()
@@ -26,6 +26,20 @@ class AuthenticationViewModel: ViewModel() {
                     }
                 } else {
                     createUserSuccess.value = false
+                }
+            }
+    }
+
+    fun login(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(MainActivity.instance) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    if (user != null) {
+                        loginSuccess.value = true
+                    }
+                } else {
+                    loginSuccess.value = false
                 }
             }
     }

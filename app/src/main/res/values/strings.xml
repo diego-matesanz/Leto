@@ -26,6 +26,7 @@
     <!-- Error Messages -->
     <string name="is_empty">Can\'t be empty</string>
     <string name="format_error">Invalid format</string>
+    <string name="wrong_credentials_error">Wrong credentials</string>
     <string name="password_match_error">Passwords must match</string>
     <string name="password_format_error">Password must be at least 6 characters</string>
 </resources>

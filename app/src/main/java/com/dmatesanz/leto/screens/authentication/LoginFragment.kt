@@ -6,11 +6,12 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dmatesanz.leto.R
@@ -26,14 +27,17 @@ class LoginFragment : Fragment() {
     private var isEmailEmpty: Boolean = true
     private var isValidEmail: Boolean = false
     private var isPasswordEmpty: Boolean = true
+    private var areWrongCredentials: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginBinding.inflate(layoutInflater)
+        viewModel.initAuth()
 
         setListeners()
+        setObservers()
         initSignUpSpan()
 
         return binding.root
@@ -71,13 +75,44 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun setObservers() {
+        viewModel.loginSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().navigate(R.id.action_loginFragment_to_menuFragment)
+            } else {
+                areWrongCredentials = true
+                checkCredentials()
+                Log.w(TAG, "signInWithEmail:failure")
+            }
+        }
+    }
+
     private fun checkCredentials() {
+        val emailValidity = isCorrectEmail()
+        val passwordValidity = isCorrectPassword()
+        areWrongCredentials = false
+        if (emailValidity && passwordValidity) {
+            viewModel.login(
+                binding.editTextEmail.text.toString(),
+                binding.editTextPassword.text.toString()
+            )
+        }
+    }
+
+    private fun isCorrectEmail(): Boolean {
         val emailError =
-            if (isEmailEmpty) resources.getString(R.string.is_empty) else null
+            if (areWrongCredentials) resources.getString(R.string.wrong_credentials_error)
+            else if (isEmailEmpty) resources.getString(R.string.is_empty) else null
         binding.textInputLayoutEmail.error = emailError
+        return emailError.isNullOrEmpty()
+    }
+
+    private fun isCorrectPassword(): Boolean {
         val passwordError =
-            if (isPasswordEmpty) resources.getString(R.string.is_empty) else null
+            if (areWrongCredentials) resources.getString(R.string.wrong_credentials_error)
+            else if (isPasswordEmpty) resources.getString(R.string.is_empty) else null
         binding.textInputLayoutPassword.error = passwordError
+        return passwordError.isNullOrEmpty()
     }
 
     private fun initSignUpSpan() {
@@ -91,12 +126,24 @@ class LoginFragment : Fragment() {
         }
         val startPosition = noAccountSpannable.toString().indexOf(signUpText, 0, false)
         val endPosition = startPosition + signUpText.length
-        noAccountSpannable.setSpan(signUpClickListener, startPosition, endPosition, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         noAccountSpannable.setSpan(
-            ForegroundColorSpan(signUpTextColor), startPosition, endPosition, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            signUpClickListener,
+            startPosition,
+            endPosition,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        noAccountSpannable.setSpan(
+            ForegroundColorSpan(signUpTextColor),
+            startPosition,
+            endPosition,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
         binding.textViewNoAccount.text = noAccountSpannable
         binding.textViewNoAccount.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    companion object {
+        private val TAG = LoginFragment::class.java.simpleName
     }
 }
