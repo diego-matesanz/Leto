@@ -24,10 +24,10 @@ class LoginFragment : Fragment() {
 
     private val viewModel: AuthenticationViewModel by activityViewModels()
 
-    private var isEmailEmpty: Boolean = true
-    private var isValidEmail: Boolean = false
-    private var isPasswordEmpty: Boolean = true
-    private var areWrongCredentials: Boolean = false
+    private var isEmailEmpty = true
+    private var isValidEmail = false
+    private var isPasswordEmpty = true
+    private var areWrongCredentials = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +41,18 @@ class LoginFragment : Fragment() {
         initSignUpSpan()
 
         return binding.root
+    }
+
+    fun checkCredentials() {
+        val emailValidity = isCorrectEmail()
+        val passwordValidity = isCorrectPassword()
+        areWrongCredentials = false
+        if (emailValidity && passwordValidity) {
+            viewModel.login(
+                binding.editTextEmail.text.toString(),
+                binding.editTextPassword.text.toString()
+            )
+        }
     }
 
     private fun setListeners() {
@@ -84,18 +96,6 @@ class LoginFragment : Fragment() {
                 checkCredentials()
                 Log.w(TAG, "signInWithEmail:failure")
             }
-        }
-    }
-
-    private fun checkCredentials() {
-        val emailValidity = isCorrectEmail()
-        val passwordValidity = isCorrectPassword()
-        areWrongCredentials = false
-        if (emailValidity && passwordValidity) {
-            viewModel.login(
-                binding.editTextEmail.text.toString(),
-                binding.editTextPassword.text.toString()
-            )
         }
     }
 
