@@ -9,8 +9,8 @@ class AuthenticationViewModel: ViewModel() {
 
     private lateinit var auth: FirebaseAuth
 
-    val createUserSuccess: MutableLiveData<Boolean> = MutableLiveData()
     val loginSuccess: MutableLiveData<Boolean> = MutableLiveData()
+    val createUserSuccess: MutableLiveData<Boolean> = MutableLiveData()
 
     fun initAuth() {
         auth = FirebaseAuth.getInstance()

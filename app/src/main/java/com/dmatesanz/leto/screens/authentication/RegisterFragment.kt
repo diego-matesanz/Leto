@@ -24,24 +24,37 @@ class RegisterFragment : Fragment() {
 
     private val viewModel: AuthenticationViewModel by activityViewModels()
 
-    private var isEmailEmpty: Boolean = true
-    private var isValidEmail: Boolean = false
-    private var isPasswordEmpty: Boolean = true
-    private var isValidPassword: Boolean = false
-    private var isRepeatPasswordEmpty: Boolean = true
-    private var isRepeatPasswordValid: Boolean = false
+    private var isEmailEmpty = true
+    private var isValidEmail = false
+    private var isPasswordEmpty = true
+    private var isValidPassword = false
+    private var isRepeatPasswordEmpty = true
+    private var isRepeatPasswordValid = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterBinding.inflate(layoutInflater)
+        binding.fragment = this
 
         setListeners()
         setObservers()
-        initSignUpSpan()
+        initLoginSpan()
 
         return binding.root
+    }
+
+    fun checkForm() {
+        val emailValidity = isCorrectEmail()
+        val passwordValidity = isCorrectPassword()
+        val repeatPasswordValidity = isCorrectRepeatPassword()
+        if (emailValidity && passwordValidity && repeatPasswordValidity) {
+            viewModel.createUser(
+                binding.editTextEmail.text.toString(),
+                binding.editTextPassword.text.toString()
+            )
+        }
     }
 
     private fun setListeners() {
@@ -88,9 +101,6 @@ class RegisterFragment : Fragment() {
                 isRepeatPasswordValid = text.toString() == binding.editTextPassword.text.toString()
             }
         }
-        binding.buttonRegister.setOnClickListener {
-            checkForm()
-        }
     }
 
     private fun setObservers() {
@@ -100,18 +110,6 @@ class RegisterFragment : Fragment() {
             } else {
                 Log.w(TAG, "createUserWithEmail:failure")
             }
-        }
-    }
-
-    private fun checkForm() {
-        val emailValidity = isCorrectEmail()
-        val passwordValidity = isCorrectPassword()
-        val repeatPasswordValidity = isCorrectRepeatPassword()
-        if (emailValidity && passwordValidity && repeatPasswordValidity) {
-            viewModel.createUser(
-                binding.editTextEmail.text.toString(),
-                binding.editTextPassword.text.toString()
-            )
         }
     }
 
@@ -141,7 +139,7 @@ class RegisterFragment : Fragment() {
         return repeatPasswordError.isNullOrEmpty()
     }
 
-    private fun initSignUpSpan() {
+    private fun initLoginSpan() {
         val haveAccountSpannable = SpannableString(resources.getString(R.string.have_account))
         val loginText = resources.getString(R.string.login)
         val loginTextColor = resources.getColor(R.color.tart_orange, null)
