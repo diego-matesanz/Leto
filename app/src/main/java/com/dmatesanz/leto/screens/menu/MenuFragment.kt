@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dmatesanz.leto.R
 import com.dmatesanz.leto.databinding.FragmentMenuBinding
+import com.dmatesanz.leto.screens.authentication.RegisterFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class MenuFragment : Fragment() {
