@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -17,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.dmatesanz.leto.R
 import com.dmatesanz.leto.databinding.FragmentLoginBinding
 import com.dmatesanz.leto.utils.ExtensionFunctions.isValidEmail
+import com.dmatesanz.leto.utils.PhoneUtil
 
 class LoginFragment : Fragment() {
 
@@ -29,11 +31,17 @@ class LoginFragment : Fragment() {
     private var isPasswordEmpty = true
     private var areWrongCredentials = false
 
+    private val onGlobalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
+        val visibility = if (PhoneUtil.isKeyBoardShowing()) View.GONE else View.VISIBLE
+        binding.imageViewAppLogo.visibility = visibility
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginBinding.inflate(layoutInflater)
+        binding.fragment = this
         viewModel.initAuth()
 
         setListeners()
@@ -41,6 +49,16 @@ class LoginFragment : Fragment() {
         initSignUpSpan()
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireView().viewTreeObserver.addOnGlobalLayoutListener(onGlobalLayoutListener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireView().viewTreeObserver.removeOnGlobalLayoutListener(onGlobalLayoutListener)
     }
 
     fun checkCredentials() {
