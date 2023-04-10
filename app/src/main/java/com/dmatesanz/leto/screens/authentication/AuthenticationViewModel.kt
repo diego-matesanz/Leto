@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.dmatesanz.leto.screens.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
-class AuthenticationViewModel: ViewModel() {
+class AuthenticationViewModel : ViewModel() {
 
     private lateinit var auth: FirebaseAuth
 
