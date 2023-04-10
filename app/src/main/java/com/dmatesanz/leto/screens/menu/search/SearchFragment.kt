@@ -13,13 +13,14 @@ class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
 
-    private val viewModel: MenuViewModel by activityViewModels()
+    private val viewModel: SearchViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchBinding.inflate(layoutInflater)
+        viewModel.getGames()
 
         return binding.root
     }

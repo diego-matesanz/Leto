@@ -15,3 +15,4 @@
 local.properties
 google-services.json
 leto-game-tracer-firebase-adminsdk-v819r-64d5669237.json
+app/src/main/java/com/dmatesanz/leto/utils/ConstantsUtil.kt

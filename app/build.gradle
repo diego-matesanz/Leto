@@ -80,6 +80,10 @@ dependencies {
     //Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    //Firebase Authentication
+    // Firebase Authentication
     implementation 'com.google.firebase:firebase-auth'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 }
