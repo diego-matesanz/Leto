@@ -6,9 +6,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitUtil {
 
-    fun getRetrofit(): Retrofit {
+    val instance by lazy { getRetrofit() }
+
+    private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(ConstantsUtil.RAWG_BASE_URL + ConstantsUtil.RAWG_API_KEY)
+            .baseUrl(ConstantsUtil.RAWG_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder().addInterceptor { chain ->
                 val request = chain.request().newBuilder()
